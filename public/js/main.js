@@ -3,12 +3,14 @@ const chatMessages=document.querySelector('.chat-messages');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
 
+const ENDPOINT="https://chat-app-h66l.onrender.com";
+
 //get user name and room from url
 const {username,room}=Qs.parse(location.search,{
     ignoreQueryPrefix:true
 });
 
-const socket=io();
+const socket=io(ENDPOINT);
 
 //Join chatroom
 socket.emit('joinRoom',{username,room});
